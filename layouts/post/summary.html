@@ -1,8 +1,12 @@
+{{ $dateFormat := default "Jan 2, 2006" (index .Site.Params "date_format") }}
+{{ $datetimeFormat := default "2006-01-02" }}
 <article class="row max-width">
     <header class="col s12 l10 offset-l1">
         <h3>
             <a class="grey-text text-darken-3" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
         </h3>
+        <address>{{ .Params.Author }}</address>
+        <time datetime="{{ .Date.Format $datetimeFormat }}">{{ .Date.Format $dateFormat }}</time>
     </header>
     <article class="col s12 l10 offset-l1">
         {{ .Summary }}
