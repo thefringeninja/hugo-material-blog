@@ -1,7 +1,7 @@
 {{ define "main" }}
-
+{{ $paginator := .Paginate ( where .Site.RegularPages.ByPublishDate.Reverse "Type" "==" "post") }}
 {{ $truncate := default true .Site.Params.truncate }}
-{{ range .Paginator.Pages }}
+{{ range $paginator.Pages }}
 
     {{ if $truncate }}
         {{ .Render "summary" }}
