@@ -23,7 +23,9 @@
   </head>
   <body>
     {{ block "header" . }}
-      {{ partial "header" . }}
+      {{ if not .Params.hide_header }}
+        {{ partial "header" . }}
+      {{ end }}
     {{ end }}
 
     {{ block "main" . }}
